@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "browser-info": "^1.1.1",
     "flow-bin": "^0.56.0",
     "mobx": "^3.3.1",
     "mobx-react": "^4.3.3",

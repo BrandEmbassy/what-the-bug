@@ -1,5 +1,6 @@
 // @flow
 import React from 'react'
+import BrowserInfo from './BrowserInfo'
 
 type ReportFormProps = {
   onSubmit: Function
@@ -11,6 +12,8 @@ function ReportForm(props: ReportFormProps) {
   return (
     <form onSubmit={onSubmit}>
       <textarea name="description"></textarea>
+
+      <BrowserInfo />
       <input type="submit" />
     </form>
   )
