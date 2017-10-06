@@ -3,6 +3,15 @@ import styled from 'styled-components';
 
 import { Paper } from 'material-ui';
 import { Portal } from 'react-portal';
+import Container from './Container';
+
+const Wrap = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
 
 const Overlay = styled.div`
   position: fixed;
@@ -14,7 +23,7 @@ const Overlay = styled.div`
   opacity: 0.7;
 `;
 
-const Wrap = styled.div`
+const Box = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -24,7 +33,7 @@ const Wrap = styled.div`
 `;
 
 type Props = {
-  toggleReporter: func,
+  toggleReporter: func
 }
 
 export default class Reporter extends Component {
@@ -33,11 +42,15 @@ export default class Reporter extends Component {
   render() {
     return (
       <Portal>
-        <Overlay onClick={this.props.toggleReporter}>
           <Wrap>
-            <Paper>ogihfighio</Paper>
+            <Overlay onClick={this.props.toggleReporter}>
+            </Overlay>
+            <Box>
+              <Paper>
+                <Container></Container>
+              </Paper>
+            </Box>
           </Wrap>
-        </Overlay>
       </Portal>
     );
   }
