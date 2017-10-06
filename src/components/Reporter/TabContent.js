@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import BrowserInfo from '../../BrowserInfo'
 
 import GeneralTab from './GeneralTab';
+import AttachmentsTab from "./AttachmentsTab"
 
 const Wrap = styled.div`
   position: relative;
@@ -27,7 +28,7 @@ class TabContent extends Component {
       case 1:
         return <BrowserInfo />
       case 2:
-        return <div className="">kokotko</div>
+        return <AttachmentsTab />
       default:
     }
   };

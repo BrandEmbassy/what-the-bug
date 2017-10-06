@@ -1,6 +1,6 @@
 // @flow
-import React, {Component} from 'react'
-import {inject, observer} from "mobx-react"
+import React, { Component } from 'react'
+import { inject, observer } from "mobx-react"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Widget from './components/Widget/Widget'
 import Reporter from './components/Reporter/Reporter'
