@@ -3,8 +3,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 export default class FirstComponent extends Component {
   render() {
-    return (
-      <RaisedButton label="Default" ></RaisedButton>
-    );
+    return <RaisedButton label="Default" />;
   }
 }

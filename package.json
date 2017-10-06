@@ -4,13 +4,16 @@
   "private": true,
   "dependencies": {
     "flow-bin": "^0.56.0",
-    "material-ui": "^0.19.3",
     "mobx": "^3.3.1",
     "mobx-react": "^4.3.3",
     "mobx-state-tree": "^1.0.1",
+    "material-ui": "next",
+    "material-ui-icons": "^1.0.0-beta.15",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-scripts": "1.0.14"
+    "react-portal": "next",
+    "react-scripts": "1.0.14",
+    "styled-components": "^2.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
