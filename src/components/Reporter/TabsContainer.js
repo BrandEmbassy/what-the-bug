@@ -1,15 +1,32 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { withStyles } from 'material-ui/styles';
 
 import TabContent from './TabContent';
-import { AppBar, Tabs, Tab } from 'material-ui';
+import { AppBar, Tabs, Tab, Button } from 'material-ui';
+
+const Wrap = styled.div`
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+`;
 
 const Div = styled.div`
   position: relative;
   display: block;
   width: 100%;
   height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
 `;
+
+const styles = theme => ({
+  button: {
+    marginRight: theme.spacing.unit,
+  }
+});
 
 class TabsContainer extends Component {
   handleChange = (e, id) => {
@@ -18,7 +35,7 @@ class TabsContainer extends Component {
 
   render() {
     return (
-      <Div>
+      <Wrap>
         <AppBar position="static" color="default">
           <Tabs
             value={this.props.tabId}
@@ -33,9 +50,17 @@ class TabsContainer extends Component {
           </Tabs>
         </AppBar>
         <TabContent tabId={this.props.tabId} />
-      </Div>
+        <Div>
+          <Button className={this.props.classes.button} raised color="primary">
+            Send
+          </Button>
+          <Button>
+            Cancel
+          </Button>
+        </Div>
+      </Wrap>
     );
   }
 }
 
-export default TabsContainer;
+export default withStyles(styles)(TabsContainer);
