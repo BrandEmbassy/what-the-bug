@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Widget from './components/Widget/Widget'
 import Reporter from './components/Reporter/Reporter'
-import * as html2canvas from "html2canvas"
+import * as html2canvas from 'html2canvas'
 import 'typeface-roboto'
 
 class App extends Component {

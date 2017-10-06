@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { withStyles } from 'material-ui/styles';
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import { withStyles } from 'material-ui/styles'
 
-import TabContent from './TabContent';
-import { AppBar, Tabs, Tab, Button } from 'material-ui';
+import TabContent from './TabContent'
+import { AppBar, Tabs, Tab, Button } from 'material-ui'
 
 const Wrap = styled.div`
   position: relative;
@@ -11,7 +11,7 @@ const Wrap = styled.div`
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-`;
+`
 
 const Div = styled.div`
   position: relative;
@@ -20,13 +20,13 @@ const Div = styled.div`
   height: 100%;
   padding: 20px;
   box-sizing: border-box;
-`;
+`
 
 const styles = theme => ({
   button: {
-    marginRight: theme.spacing.unit,
+    marginRight: theme.spacing.unit
   }
-});
+})
 
 class TabsContainer extends Component {
   handleChange = (e, id) => {
@@ -36,7 +36,7 @@ class TabsContainer extends Component {
   render () {
     return (
       <Wrap>
-        <AppBar position="static" color="default">
+        <AppBar position='static' color='default'>
           <Tabs
             value={this.props.tabId}
             onChange={this.handleChange}
@@ -51,7 +51,7 @@ class TabsContainer extends Component {
         </AppBar>
         <TabContent tabId={this.props.tabId} />
         <Div>
-          <Button className={this.props.classes.button} raised color="primary">
+          <Button className={this.props.classes.button} raised color='primary'>
             Send
           </Button>
           <Button>
@@ -59,8 +59,8 @@ class TabsContainer extends Component {
           </Button>
         </Div>
       </Wrap>
-    );
+    )
   }
 }
 
-export default withStyles(styles)(TabsContainer);
+export default withStyles(styles)(TabsContainer)
