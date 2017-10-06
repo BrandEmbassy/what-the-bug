@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import BrowserInfo from '../../BrowserInfo'
 
 import GeneralTab from './GeneralTab';
 
@@ -24,7 +25,7 @@ class TabContent extends Component {
       case 0:
         return <GeneralTab />;
       case 1:
-        return 'PICA';
+        return <BrowserInfo />
       default:
     }
   };
