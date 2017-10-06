@@ -26,6 +26,8 @@ class TabContent extends Component {
         return <GeneralTab />;
       case 1:
         return <BrowserInfo />
+      case 2:
+        return <div className="">kokotko</div>
       default:
     }
   };

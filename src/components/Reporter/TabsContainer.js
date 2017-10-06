@@ -29,6 +29,7 @@ class TabsContainer extends Component {
           >
             <Tab label="General" />
             <Tab label="Diagnostics" />
+            <Tab label="Attachments" />
           </Tabs>
         </AppBar>
         <TabContent tabId={this.props.tabId} />
