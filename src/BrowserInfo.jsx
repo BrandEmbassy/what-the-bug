@@ -1,18 +1,18 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 
-function BrowserInfo({appStore: { reportStore }}) {
+function BrowserInfo({appStore: { reporter }}) {
   return (
     <dl>
       <dt>Browser</dt>
       <dl>
-        {reportStore.browserName}
-        <small>(version: {reportStore.browserVersion})</small>
+        {reporter.browserName}
+        <small>(version: {reporter.browserVersion})</small>
       </dl>
 
 
       <dt>Operating system</dt>
-      <dl>{reportStore.osName}</dl>
+      <dl>{reporter.osName}</dl>
     </dl>
   )
 }

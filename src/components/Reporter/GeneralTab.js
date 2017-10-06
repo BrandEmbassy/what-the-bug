@@ -13,11 +13,11 @@ const Wrap = styled.div`
 
 class GeneralTab extends Component {
   handleEmailChange = (e) => {
-    this.props.appStore.general.setEmail(e.target.value)
+    this.props.appStore.reporter.setEmail(e.target.value)
   }
 
   handleDescChange = (e) => {
-    this.props.appStore.general.setDesc(e.target.value)
+    this.props.appStore.reporter.setDesc(e.target.value)
   }
 
   render() {
@@ -26,7 +26,7 @@ class GeneralTab extends Component {
         <TextField
           id="email"
           label="E-mail"
-          value={this.props.appStore.general.email}
+          value={this.props.appStore.reporter.email}
           onChange={this.handleEmailChange}
           margin="normal"
           fullWidth
@@ -35,8 +35,8 @@ class GeneralTab extends Component {
           id="multiline-flexible"
           label="Multiline"
           multiline
-          rowsMax="4"
-          value={this.props.appStore.general.desc}
+          rowsMax="6"
+          value={this.props.appStore.reporter.desc}
           onChange={this.handleDescChange}
           margin="normal"
           fullWidth

@@ -1,6 +1,5 @@
 import { types, getEnv } from "mobx-state-tree"
 import { UiStore } from "./UiStore"
-import { GeneralStore } from "./GeneralStore"
 import { ReportStore } from './ReportStore';
 
 
@@ -10,11 +9,7 @@ export const AppStore = types
           isOpen: false,
           tabId: 0
         }),
-        general: types.optional(GeneralStore, {
-          email: '',
-          desc: '',
-        }),
-        reportStore: types.optional(ReportStore, {}),
+        reporter: types.optional(ReportStore, {}),
     })
     .views(self => ({
         get alert() {

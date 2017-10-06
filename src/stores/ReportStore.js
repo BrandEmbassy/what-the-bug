@@ -6,6 +6,9 @@ export const ReportStore = types
     browserName: '',
     browserVersion: '',
     osName: '',
+
+    email: '',
+    desc: '',
   })
   .actions(self => ({
 
@@ -16,6 +19,14 @@ export const ReportStore = types
       self.browserName = `${browser.name} ${browser.version}`,
       self.browserVersion =  browser.fullVersion,
       self.osName = browser.os
+    },
+
+    setEmail(email) {
+      self.email = email;
+    },
+
+    setDesc(desc) {
+      self.desc = desc;
     }
 
   }));
