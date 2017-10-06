@@ -4,7 +4,6 @@ import { observer, inject } from "mobx-react"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Widget from './components/Widget/Widget';
 import Reporter from './components/Reporter/Reporter';
-import ReportForm from './ReportForm';
 import BrowserInfo from './BrowserInfo'
 
 class App extends Component {
@@ -44,7 +43,6 @@ class App extends Component {
       <MuiThemeProvider>
         <Widget toggleReporter={this.toggleReporter} />
         {this.renderReporter()}
-        <ReportForm />
       </MuiThemeProvider>
     );
   }

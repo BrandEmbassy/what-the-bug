@@ -5,9 +5,13 @@ function BrowserInfo({appStore: { reportStore }}) {
   return (
     <dl>
       <dt>Browser</dt>
-      <dl>{reportStore.browserName}</dl>
+      <dl>
+        {reportStore.browserName}
+        <small>(version: {reportStore.browserVersion})</small>
+      </dl>
 
-      <dt>OS</dt>
+
+      <dt>Operating system</dt>
       <dl>{reportStore.osName}</dl>
     </dl>
   )

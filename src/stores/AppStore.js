@@ -13,7 +13,7 @@ export const AppStore = types
         general: types.optional(GeneralStore, {
           email: '',
           desc: '',
-        })
+        }),
         reportStore: types.optional(ReportStore, {}),
     })
     .views(self => ({
