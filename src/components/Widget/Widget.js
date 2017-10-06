@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+
 import { Button } from 'material-ui';
 import { Portal } from 'react-portal';
 import { BugReport } from 'material-ui-icons';
@@ -12,12 +13,18 @@ const Wrap = styled.div`
   height: 56px;
 `;
 
+type Props = {
+  toggleReporter: func,
+}
+
 export default class Widget extends Component {
+  props: Props;
+
   render() {
     return (
       <Portal>
         <Wrap>
-          <Button fab color="primary" aria-label="add">
+          <Button onClick={this.props.toggleReporter} fab color="primary" aria-label="add">
             <BugReport />
           </Button>
         </Wrap>

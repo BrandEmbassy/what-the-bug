@@ -3,7 +3,9 @@ import { UiStore } from "./UiStore"
 
 export const AppStore = types
     .model("AppStore", {
-        ui: types.optional(UiStore, {})
+        ui: types.optional(UiStore, {
+          isOpen: false
+        })
     })
     .views(self => ({
         get alert() {

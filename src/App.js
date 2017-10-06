@@ -1,23 +1,31 @@
 import React, { Component } from 'react';
+import { observer, inject } from "mobx-react"
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Widget from './Widget/Widget';
-import Reporter from './Reporter/Reporter';
+import Widget from './components/Widget/Widget';
+import Reporter from './components/Reporter/Reporter';
 
-export default class App extends Component {
-  renderWidget = (param) => {
-    if (param) {
-      return <Widget />;
+class App extends Component {
+  toggleReporter = () => {
+    this.props.appStore.ui.toggleReporter();
+  };
+
+  renderReporter = () => {
+    if (this.props.appStore.ui.isOpen) {
+      return <Reporter toggleReporter={this.toggleReporter}/>;
     }
 
-    return <Reporter />;
+    return null;
   };
+
   render() {
     return (
       <MuiThemeProvider>
-        {this.renderWidget(true)}
-        {this.renderWidget(false)}
+        <Widget toggleReporter={this.toggleReporter} />
+        {this.renderReporter()}
       </MuiThemeProvider>
     );
   }
 }
+
+export default inject('appStore')(observer(App));
