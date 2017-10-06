@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { observer } from 'mobx-react';
-import { observable } from 'mobx';
 
 import TabContent from './TabContent';
-
 import { AppBar, Tabs, Tab } from 'material-ui';
 
 const Div = styled.div`
@@ -15,16 +12,8 @@ const Div = styled.div`
 `;
 
 class TabsContainer extends Component {
-  constructor() {
-    super();
-
-    this.tabState = observable({
-      tabId: 0
-    });
-  }
-
   handleChange = (e, id) => {
-    this.tabState.tabId = id;
+    this.props.onTabClick(id);
   };
 
   render() {
@@ -32,20 +21,20 @@ class TabsContainer extends Component {
       <Div>
         <AppBar position="static" color="default">
           <Tabs
-            value={this.tabState.tabId}
+            value={this.props.tabId}
             onChange={this.handleChange}
             indicatorColor="primary"
             textColor="primary"
             fullWidth
           >
-            <Tab label="Item One" />
-            <Tab label="Item Two" />
+            <Tab label="General" />
+            <Tab label="Diagnostics" />
           </Tabs>
         </AppBar>
-        <TabContent tabId={this.tabState.tabId} />
+        <TabContent tabId={this.props.tabId} />
       </Div>
     );
   }
 }
 
-export default observer(TabsContainer);
+export default TabsContainer;

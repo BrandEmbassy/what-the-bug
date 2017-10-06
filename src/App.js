@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { observer, inject } from "mobx-react"
+import { observer, inject } from 'mobx-react';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Widget from './components/Widget/Widget';
@@ -10,9 +10,20 @@ class App extends Component {
     this.props.appStore.ui.toggleReporter();
   };
 
+  setTab = tabId => {
+    console.log(tabId);
+    this.props.appStore.ui.setTab(tabId);
+  };
+
   renderReporter = () => {
     if (this.props.appStore.ui.isOpen) {
-      return <Reporter toggleReporter={this.toggleReporter}/>;
+      return (
+        <Reporter
+          toggleReporter={this.toggleReporter}
+          onTabClick={this.setTab}
+          tabId={this.props.appStore.ui.tabId}
+        />
+      );
     }
 
     return null;
