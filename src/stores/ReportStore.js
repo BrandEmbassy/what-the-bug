@@ -1,14 +1,22 @@
 import { types } from 'mobx-state-tree'
-import { BrowserStore } from './BrowserStore'
+import browserInfo from 'browser-info'
 
-const ReportStore = types
-  .model(
-    browserStore: types.optional(BrowserStore, {})
-  )
-  .views()
+export const ReportStore = types
+  .model('ReportStore', {
+    browserName: '',
+    browserVersion: '',
+    osName: '',
+  })
   .actions(self => ({
+
     afterCreate() {
-        self.browserStore.loadInfo()
+      console.log('creating broser info')
+      const browser = browserInfo()
+
+      self.browserName = `${browser.name} ${browser.version}`,
+      self.browserVersion =  browser.fullVersion,
+      self.osName = browser.os
     }
-  }))
+
+  }));
 

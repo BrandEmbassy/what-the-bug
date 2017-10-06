@@ -1,25 +1,16 @@
 import React from 'react'
-import browserInfo from 'browser-info'
+import { inject, observer } from 'mobx-react'
 
-function BrowserInfo() {
-
-  const browser = browserInfo()
-  const screen = window.screen
-
+function BrowserInfo({appStore: { reportStore }}) {
   return (
     <dl>
       <dt>Browser</dt>
-      <dd>{browser.name} {browser.version} ({browser.fullVersion})</dd>
+      <dl>{reportStore.browserName}</dl>
+
       <dt>OS</dt>
-      <dd>{browser.os}</dd>
-      <dt>Screen</dt>
-      <dd>
-        {screen.width}px x {screen.height}px
-        (available: {screen.availWidth}px x {screen.availHeight}px)
-        {screen.colorDepth}bit
-      </dd>
+      <dl>{reportStore.osName}</dl>
     </dl>
   )
 }
 
-export default BrowserInfo
+export default inject('appStore')(observer(BrowserInfo))

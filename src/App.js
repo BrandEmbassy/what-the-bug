@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Widget from './components/Widget/Widget';
 import Reporter from './components/Reporter/Reporter';
 import ReportForm from './ReportForm';
+import BrowserInfo from './BrowserInfo'
 
 class App extends Component {
 

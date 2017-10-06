@@ -10,7 +10,6 @@ class ReportForm extends Component<any, any> {
   }
 
   render(): JSX.Element {
-    const {onSubmit} = this.props;
     return <View onSubmit={this.onSubmit} />
   }
 

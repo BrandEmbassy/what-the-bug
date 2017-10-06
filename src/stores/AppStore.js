@@ -1,6 +1,8 @@
 import { types, getEnv } from "mobx-state-tree"
 import { UiStore } from "./UiStore"
 import { GeneralStore } from "./GeneralStore"
+import { ReportStore } from './ReportStore';
+
 
 export const AppStore = types
     .model("AppStore", {
@@ -12,6 +14,7 @@ export const AppStore = types
           email: '',
           desc: '',
         })
+        reportStore: types.optional(ReportStore, {}),
     })
     .views(self => ({
         get alert() {
