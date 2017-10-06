@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from 'react'
+import styled from 'styled-components'
 
-import { Paper } from 'material-ui';
-import { Portal } from 'react-portal';
-import TabsContainer from './TabsContainer';
+import { Paper } from 'material-ui'
+import { Portal } from 'react-portal'
+import TabsContainer from './TabsContainer'
 
 const Wrap = styled.div`
   position: fixed;
@@ -11,7 +11,7 @@ const Wrap = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-`;
+`
 
 const Overlay = styled.div`
   position: fixed;
@@ -21,7 +21,7 @@ const Overlay = styled.div`
   height: 100%;
   background-color: #000;
   opacity: 0.7;
-`;
+`
 
 const Box = styled.div`
   position: absolute;
@@ -30,7 +30,7 @@ const Box = styled.div`
   transform: translate(-50%, -50%);
   width: 700px;
   height: auto;
-`;
+`
 
 type Props = {
   toggleReporter: func
@@ -39,18 +39,18 @@ type Props = {
 export default class Reporter extends Component {
   props: Props;
 
-  render() {
+  render () {
     return (
       <Portal>
         <Wrap>
           <Overlay onClick={this.props.toggleReporter} />
           <Box>
             <Paper>
-              <TabsContainer onTabClick={this.props.onTabClick} tabId={this.props.tabId}/>
+              <TabsContainer onTabClick={this.props.onTabClick} tabId={this.props.tabId} />
             </Paper>
           </Box>
         </Wrap>
       </Portal>
-    );
+    )
   }
 }

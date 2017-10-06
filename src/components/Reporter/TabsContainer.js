@@ -30,23 +30,23 @@ const styles = theme => ({
 
 class TabsContainer extends Component {
   handleChange = (e, id) => {
-    this.props.onTabClick(id);
+    this.props.onTabClick(id)
   };
 
-  render() {
+  render () {
     return (
       <Wrap>
         <AppBar position="static" color="default">
           <Tabs
             value={this.props.tabId}
             onChange={this.handleChange}
-            indicatorColor="primary"
-            textColor="primary"
+            indicatorColor='primary'
+            textColor='primary'
             fullWidth
           >
-            <Tab label="General" />
-            <Tab label="Diagnostics" />
-            <Tab label="Attachments" />
+            <Tab label='General' />
+            <Tab label='Diagnostics' />
+            <Tab label='Attachments' />
           </Tabs>
         </AppBar>
         <TabContent tabId={this.props.tabId} />

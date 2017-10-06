@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { observer, inject } from 'mobx-react';
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import { observer, inject } from 'mobx-react'
 
-import { TextField } from 'material-ui';
+import { TextField } from 'material-ui'
 
 const Wrap = styled.div`
   position: relative;
   display: block;
   width: 100%;
   height: 100%;
-`;
+`
 
 class GeneralTab extends Component {
   handleEmailChange = (e) => {
@@ -20,30 +20,30 @@ class GeneralTab extends Component {
     this.props.appStore.reporter.setDesc(e.target.value)
   }
 
-  render() {
+  render () {
     return (
       <Wrap>
         <TextField
-          id="email"
-          label="E-mail"
+          id='email'
+          label='E-mail'
           value={this.props.appStore.reporter.email}
           onChange={this.handleEmailChange}
-          margin="normal"
+          margin='normal'
           fullWidth
         />
         <TextField
-          id="multiline-flexible"
-          label="Multiline"
+          id='multiline-flexible'
+          label='Multiline'
           multiline
-          rowsMax="6"
+          rowsMax='6'
           value={this.props.appStore.reporter.desc}
           onChange={this.handleDescChange}
-          margin="normal"
+          margin='normal'
           fullWidth
         />
       </Wrap>
-    );
+    )
   }
 }
 
-export default inject('appStore')(observer(GeneralTab));
+export default inject('appStore')(observer(GeneralTab))

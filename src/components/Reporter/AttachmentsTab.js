@@ -10,11 +10,11 @@ const Wrap = styled.div`
 `
 
 class AttachmentsTab extends Component {
-  render() {
+  render () {
     return (
       <Wrap>
         {this.props.appStore.reporter.attachments.map((attachment) => {
-          return <img width="256" border="1" src={attachment} alt=""/>;
+          return <img width='256' border='1' src={attachment} alt='' />
         })}
       </Wrap>
     )

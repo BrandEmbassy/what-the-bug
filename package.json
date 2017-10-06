@@ -19,7 +19,11 @@
     "typeface-roboto": "^0.0.35"
   },
   "devDependencies": {
+    "babel-eslint": "^8.0.1",
     "standard": "^10.0.3"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   },
   "scripts": {
     "start": "react-scripts start",

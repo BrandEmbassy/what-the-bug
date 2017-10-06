@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from 'react'
+import styled from 'styled-components'
 
-import { Button } from 'material-ui';
-import { Portal } from 'react-portal';
-import { BugReport } from 'material-ui-icons';
+import { Button } from 'material-ui'
+import { Portal } from 'react-portal'
+import { BugReport } from 'material-ui-icons'
 
 const Wrap = styled.div`
   position: fixed;
@@ -11,7 +11,7 @@ const Wrap = styled.div`
   right: 10px;
   width: 56px;
   height: 56px;
-`;
+`
 
 type Props = {
   toggleReporter: func,
@@ -20,15 +20,15 @@ type Props = {
 export default class Widget extends Component {
   props: Props;
 
-  render() {
+  render () {
     return (
       <Portal>
         <Wrap>
-          <Button onClick={this.props.toggleReporter} fab color="primary" aria-label="add">
+          <Button onClick={this.props.toggleReporter} fab color='primary' aria-label='add'>
             <BugReport />
           </Button>
         </Wrap>
       </Portal>
-    );
+    )
   }
 }

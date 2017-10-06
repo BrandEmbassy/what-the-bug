@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react'
-import { inject, observer } from "mobx-react"
+import { inject, observer } from 'mobx-react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Widget from './components/Widget/Widget'
 import Reporter from './components/Reporter/Reporter'
@@ -8,7 +8,6 @@ import * as html2canvas from "html2canvas"
 import 'typeface-roboto'
 
 class App extends Component {
-
   toggleReporter = () => {
     this.screenshot()
     this.props.appStore.ui.toggleReporter()
@@ -34,15 +33,15 @@ class App extends Component {
 
   screenshot = () => {
     html2canvas(document.body).then((canvas) => {
-      const screenshot = canvas.toDataURL("image/png")
+      const screenshot = canvas.toDataURL('image/png')
       this.props.appStore.reporter.addAttachment(screenshot)
     })
   }
 
-  render() {
+  render () {
     return (
       <MuiThemeProvider>
-        <Widget toggleReporter={this.toggleReporter}/>
+        <Widget toggleReporter={this.toggleReporter} />
         {this.renderReporter()}
       </MuiThemeProvider>
     )
