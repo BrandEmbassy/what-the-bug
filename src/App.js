@@ -1,21 +1,22 @@
 // @flow
-import React, { Component } from 'react';
-import { observer, inject } from "mobx-react"
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Widget from './components/Widget/Widget';
-import Reporter from './components/Reporter/Reporter';
-import BrowserInfo from './BrowserInfo'
+import React, {Component} from 'react'
+import {inject, observer} from "mobx-react"
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import Widget from './components/Widget/Widget'
+import Reporter from './components/Reporter/Reporter'
+import * as html2canvas from "html2canvas"
 
 class App extends Component {
 
   toggleReporter = () => {
-    this.props.appStore.ui.toggleReporter();
-  };
+    this.screenshot()
+    this.props.appStore.ui.toggleReporter()
+  }
 
   setTab = tabId => {
-    console.log(tabId);
-    this.props.appStore.ui.setTab(tabId);
-  };
+    console.log(tabId)
+    this.props.appStore.ui.setTab(tabId)
+  }
 
   renderReporter = () => {
     if (this.props.appStore.ui.isOpen) {
@@ -25,27 +26,26 @@ class App extends Component {
           onTabClick={this.setTab}
           tabId={this.props.appStore.ui.tabId}
         />
-      );
+      )
     }
-    return null;
-  };
+    return null
+  }
 
-  renderWidget = (param) => {
-    if (param) {
-      return <Widget />;
-    }
-
-    return null;
-  };
+  screenshot = () => {
+    html2canvas(document.body).then((canvas) => {
+      const screenshot = canvas.toDataURL("image/png")
+      this.props.appStore.reporter.addAttachment(screenshot)
+    })
+  }
 
   render() {
     return (
       <MuiThemeProvider>
-        <Widget toggleReporter={this.toggleReporter} />
+        <Widget toggleReporter={this.toggleReporter}/>
         {this.renderReporter()}
       </MuiThemeProvider>
-    );
+    )
   }
 }
 
-export default inject('appStore')(observer(App));
+export default inject('appStore')(observer(App))

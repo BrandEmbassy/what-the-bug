@@ -1,4 +1,4 @@
-import { types } from "mobx-state-tree";
+import { types } from 'mobx-state-tree'
 
 export const UiStore = types
     .model('UiStore', {
@@ -9,10 +9,10 @@ export const UiStore = types
 
     }))
     .actions(self => ({
-      toggleReporter() {
-        self.isOpen = !self.isOpen;
+      toggleReporter () {
+        self.isOpen = !self.isOpen
       },
-      setTab(tabId) {
-        self.tabId = tabId;
+      setTab (tabId) {
+        self.tabId = tabId
       }
     }))

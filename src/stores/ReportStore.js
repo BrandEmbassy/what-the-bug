@@ -9,25 +9,29 @@ export const ReportStore = types
 
     email: '',
     desc: '',
+    attachments: types.array(types.string)
   })
   .actions(self => ({
 
-    afterCreate() {
+    afterCreate () {
       console.log('creating broser info')
       const browser = browserInfo()
 
-      self.browserName = `${browser.name} ${browser.version}`,
-      self.browserVersion =  browser.fullVersion,
+      self.browserName = `${browser.name} ${browser.version}`
+      self.browserVersion = browser.fullVersion
       self.osName = browser.os
     },
 
-    setEmail(email) {
-      self.email = email;
+    setEmail (email) {
+      self.email = email
     },
 
-    setDesc(desc) {
-      self.desc = desc;
+    setDesc (desc) {
+      self.desc = desc
+    },
+
+    addAttachment (attachment) {
+      self.attachments.push(attachment)
     }
 
-  }));
-
+  }))
