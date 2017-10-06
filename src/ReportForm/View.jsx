@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import BrowserInfo from './BrowserInfo'
+import BrowserInfo from '../BrowserInfo'
 
 type ReportFormProps = {
   onSubmit: Function
