@@ -33,6 +33,7 @@ const Box = styled.div`
   transform: translate(-50%, -50%);
   width: 700px;
   height: auto;
+  transition: height .18s;
 `
 
 type Props = {
@@ -64,6 +65,7 @@ class Reporter extends Component {
           <Box>
             <Paper>
               <TabsContainer
+                validData={this.props.appStore.reporter.validUserInput}
                 onCancelClick={this.props.toggleReporter}
                 sendReport={this.sendReport}
                 onTabClick={this.props.onTabClick}

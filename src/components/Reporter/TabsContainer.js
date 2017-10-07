@@ -55,6 +55,14 @@ class TabsContainer extends Component {
     this.props.onTabClick(index)
   }
 
+  handleSendClick = () => {
+    if (!this.props.validData) {
+      return;
+    }
+
+    this.props.sendReport();
+  }
+
   render() {
     return (
       <Wrap>
@@ -86,6 +94,7 @@ class TabsContainer extends Component {
             className={this.props.classes.button}
             raised
             color="primary"
+            disabled={!this.props.validData}
           >
             Send
           </Button>
