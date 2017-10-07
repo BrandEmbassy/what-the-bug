@@ -1,6 +1,7 @@
 import { types, getEnv } from 'mobx-state-tree'
 import { UiStore } from './UiStore'
 import { ReportStore } from './ReportStore'
+import { SenderStore } from './SenderStore'
 
 export const AppStore = types
   .model('AppStore', {
@@ -11,7 +12,8 @@ export const AppStore = types
     reporter: types.optional(ReportStore, {
       attachments: [],
       windowPerformance: {}
-    })
+    }),
+    sender: types.optional(SenderStore, {})
   })
   .views(self => ({
     get alert () {

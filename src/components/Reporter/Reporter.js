@@ -50,8 +50,9 @@ class Reporter extends Component {
       'Browser Version: ' + reporter.browser.version + '\n' +
       'OS: ' + reporter.osName + '\n'
 
-    createPost('WAT? The bug?', content, {id: reporter.email, name: 'Meganasratý zákoš'}).then((postId) => {
-      addAttachments(postId, reporter.attachments).then(() => {
+    createPost(reportUrl, channelId, 'Bug Report by WTB', content, {id: reporter.email, name: 'Agent'}).then((postId) => {
+      const attachmentUrl = `${reportUrl}/${postId}/attachments`
+      addAttachments(attachmentUrl, reporter.attachments).then(() => {
         this.props.toggleReporter()
       })
     })
