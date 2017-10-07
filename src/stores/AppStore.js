@@ -8,7 +8,10 @@ export const AppStore = types
       isOpen: false,
       tabId: 0
     }),
-    reporter: types.optional(ReportStore, {attachments: []})
+    reporter: types.optional(ReportStore, {
+      attachments: [],
+      windowPerformance: {}
+    })
   })
   .views(self => ({
     get alert () {

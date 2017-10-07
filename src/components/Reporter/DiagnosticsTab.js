@@ -14,15 +14,20 @@ const Wrap = styled.div`
 
 class DiagnosticsTab extends Component {
   render() {
+    const reporter = this.props.appStore.reporter;
 
     return (
       <Wrap>
-        <Typography type="body2">Browser</Typography>
-        <Typography gutterBottom>{this.props.appStore.reporter.browserName} version: {this.props.appStore.reporter.browserVersion}</Typography>
+        <Typography type="body2">System info:</Typography>
+        <ul>
+          <li>{reporter.browser.name} (<small>{reporter.browser.version}</small>)</li>
+          <li>{reporter.osName}</li>
+        </ul>
 
-        <Typography type="body2">Operating System</Typography>
-        <Typography>{this.props.appStore.reporter.osName}</Typography>
-
+        <Typography type="body2">Performance</Typography>
+        <textarea disabled style={{width: '650px', height: '300px'}}>
+          {JSON.stringify(reporter.windowPerformance, null, 2)}
+        </textarea>
       </Wrap>
     )
   }

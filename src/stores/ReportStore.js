@@ -1,19 +1,38 @@
 import { types } from 'mobx-state-tree'
-import browserInfo from 'browser-info'
 
 function validateEmail(email) {
-  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(email);
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email)
 }
 
-export const ReportStore = types
+const BrowserStore = types
+  .model('BrowserStore', {
+    name: '',
+    version: ''
+  })
+  .actions(self => ({
+
+    setName (name) {
+      self.name = name
+    },
+
+    setVersion (version) {
+      self.version = version
+    }
+
+  }))
+
+const ReportStore = types
   .model('ReportStore', {
-    browserName: '',
-    browserVersion: '',
+    browser: types.optional(BrowserStore, {
+      name: '',
+      version: ''
+    }),
     osName: '',
+    windowPerformance: types.frozen,
 
     email: '',
-    desc: '',
+    description: '',
     attachments: types.array(types.string)
   })
   .views(self => ({
@@ -23,21 +42,20 @@ export const ReportStore = types
   }))
   .actions(self => ({
 
-    afterCreate () {
-      console.log('creating broser info')
-      const browser = browserInfo()
+    setWindowPerformance(windowPerformance) {
+      self.windowPerformance = windowPerformance
+    },
 
-      self.browserName = `${browser.name} ${browser.version}`
-      self.browserVersion = browser.fullVersion
-      self.osName = browser.os
+    setOsName(osName) {
+      self.osName = osName
     },
 
     setEmail (email) {
       self.email = email
     },
 
-    setDesc (desc) {
-      self.desc = desc
+    setDesc (description) {
+      self.description = description
     },
 
     addAttachment (attachment) {
@@ -49,3 +67,8 @@ export const ReportStore = types
     }
 
   }))
+
+export {
+  BrowserStore,
+  ReportStore
+}

@@ -5,6 +5,7 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 import { deepOrange } from 'material-ui/colors'
 import Widget from './components/Widget/Widget'
 import Reporter from './components/Reporter/Reporter'
+import browserInfo from 'browser-info'
 import * as html2canvas from 'html2canvas'
 import 'typeface-roboto'
 
@@ -17,8 +18,14 @@ const theme = createMuiTheme({
 class App extends Component {
   toggleReporter = () => {
     if (!this.props.appStore.ui.isOpen) {
-      this.props.appStore.reporter.deleteAttachments();
+      this.props.appStore.reporter.deleteAttachments()
       this.screenshot()
+      const reporter = this.props.appStore.reporter
+      const browser = browserInfo()
+      reporter.browser.setName(`${browser.name} ${browser.version}`)
+      reporter.browser.setVersion(browser.fullVersion)
+      reporter.setOsName(browser.os)
+      reporter.setWindowPerformance(window.performance)
     }
 
     this.props.appStore.ui.toggleReporter()

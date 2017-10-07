@@ -45,9 +45,9 @@ class Reporter extends Component {
 
   sendReport = () => {
     const reporter = this.props.appStore.reporter
-    const content = reporter.desc + '\n\n' +
-      'Browser: ' + reporter.browserName + '\n' +
-      'Browser Version: ' + reporter.browserVersion + '\n' +
+    const content = reporter.description + '\n\n' +
+      'Browser: ' + reporter.browser.name + '\n' +
+      'Browser Version: ' + reporter.browser.version + '\n' +
       'OS: ' + reporter.osName + '\n'
 
     createPost('WAT? The bug?', content, {id: reporter.email, name: 'Meganasratý zákoš'}).then((postId) => {
