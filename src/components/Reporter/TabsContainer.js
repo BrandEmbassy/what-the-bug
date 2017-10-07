@@ -33,6 +33,10 @@ class TabsContainer extends Component {
     this.props.onTabClick(id)
   };
 
+  handleChangeIndex = index => {
+    this.props.onTabClick(index)
+  }
+
   render () {
     return (
       <Wrap>
@@ -49,12 +53,12 @@ class TabsContainer extends Component {
             <Tab label='Attachments' />
           </Tabs>
         </AppBar>
-        <TabContent tabId={this.props.tabId} />
+        <TabContent tabId={this.props.tabId} onChange={this.handleChangeIndex}/>
         <Div>
           <Button className={this.props.classes.button} raised color='primary'>
             Send
           </Button>
-          <Button>
+          <Button onClick={this.props.onCancelClick}>
             Cancel
           </Button>
         </Div>

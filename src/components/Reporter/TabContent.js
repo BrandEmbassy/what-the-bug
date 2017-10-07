@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import BrowserInfo from '../../BrowserInfo'
+import SwipeableViews from 'react-swipeable-views';
 
+import DiagnosticsTab from './DiagnosticsTab'
 import GeneralTab from './GeneralTab'
 import AttachmentsTab from './AttachmentsTab'
 
@@ -15,26 +16,21 @@ const Wrap = styled.div`
 `
 
 type Props = {
-  tabId: number
+  tabId: number,
+  onChange: func
 };
 
 class TabContent extends Component {
   props: Props;
 
-  renderTabContent = () => {
-    switch (this.props.tabId) {
-      case 0:
-        return <GeneralTab />
-      case 1:
-        return <BrowserInfo />
-      case 2:
-        return <AttachmentsTab />
-      default:
-    }
-  };
-
   render () {
-    return <Wrap>{this.renderTabContent()}</Wrap>
+    return <Wrap>
+      <SwipeableViews index={this.props.tabId} onChangeIndex={this.onChange}>
+        <GeneralTab />
+        <DiagnosticsTab />
+        <AttachmentsTab />
+      </SwipeableViews>
+    </Wrap>
   }
 }
 

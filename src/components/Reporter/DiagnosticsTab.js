@@ -1,7 +1,7 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 
-function BrowserInfo ({appStore: { reporter }}) {
+function DiagnosticsTab ({appStore: { reporter }}) {
   return (
     <dl>
       <dt>Browser</dt>
@@ -16,4 +16,4 @@ function BrowserInfo ({appStore: { reporter }}) {
   )
 }
 
-export default inject('appStore')(observer(BrowserInfo))
+export default inject('appStore')(observer(DiagnosticsTab))

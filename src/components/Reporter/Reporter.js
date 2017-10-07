@@ -46,7 +46,11 @@ export default class Reporter extends Component {
           <Overlay onClick={this.props.toggleReporter} />
           <Box>
             <Paper>
-              <TabsContainer onTabClick={this.props.onTabClick} tabId={this.props.tabId} />
+              <TabsContainer
+                onCancelClick={this.props.toggleReporter}
+                onTabClick={this.props.onTabClick}
+                tabId={this.props.tabId}
+              />
             </Paper>
           </Box>
         </Wrap>
