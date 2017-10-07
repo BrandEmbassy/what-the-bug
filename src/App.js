@@ -1,11 +1,18 @@
 // @flow
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
+import { deepOrange } from 'material-ui/colors'
 import Widget from './components/Widget/Widget'
 import Reporter from './components/Reporter/Reporter'
 import * as html2canvas from 'html2canvas'
 import 'typeface-roboto'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: deepOrange
+  }
+})
 
 class App extends Component {
   toggleReporter = () => {
@@ -14,7 +21,6 @@ class App extends Component {
   }
 
   setTab = tabId => {
-    console.log(tabId)
     this.props.appStore.ui.setTab(tabId)
   }
 
@@ -32,18 +38,20 @@ class App extends Component {
   }
 
   screenshot = () => {
-    html2canvas(document.body).then((canvas) => {
+    html2canvas(document.body).then(canvas => {
       const screenshot = canvas.toDataURL('image/png')
       this.props.appStore.reporter.addAttachment(screenshot)
     })
   }
 
-  render () {
+  render() {
     return (
+      <MuiThemeProvider theme={theme}>
         <div>
           <Widget toggleReporter={this.toggleReporter} />
           {this.renderReporter()}
         </div>
+      </MuiThemeProvider>
     )
   }
 }

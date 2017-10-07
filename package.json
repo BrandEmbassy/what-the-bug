@@ -31,6 +31,7 @@
   "proxy": "http://api.be.com",
   "scripts": {
     "start": "PORT=3002 react-scripts start",
+    "startWin": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",

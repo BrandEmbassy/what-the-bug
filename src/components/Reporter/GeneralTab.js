@@ -33,7 +33,7 @@ class GeneralTab extends Component {
         />
         <TextField
           id='multiline-flexible'
-          label='Multiline'
+          label='Describe your problem'
           multiline
           rowsMax='6'
           value={this.props.appStore.reporter.desc}

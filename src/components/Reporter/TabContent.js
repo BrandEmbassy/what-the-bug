@@ -25,7 +25,7 @@ class TabContent extends Component {
 
   render () {
     return <Wrap>
-      <SwipeableViews index={this.props.tabId} onChangeIndex={this.onChange}>
+      <SwipeableViews index={this.props.tabId} onChangeIndex={this.props.onChange}>
         <GeneralTab />
         <DiagnosticsTab />
         <AttachmentsTab />
