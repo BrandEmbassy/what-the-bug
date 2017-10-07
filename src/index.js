@@ -1,23 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'mobx-react'
+
 import './index.css'
-import App from './App'
+import WhatTheBug from './WhatTheBug'
 import registerServiceWorker from './registerServiceWorker'
 
-import { AppStore } from './stores/AppStore'
-
-const appStore = AppStore.create(
-  {},
-  {
-    alert: m => console.alert(m)
-  }
-)
-
 ReactDOM.render(
-  <Provider appStore={appStore}>
-    <App />
-  </Provider>,
+  <WhatTheBug />,
   document.getElementById('root')
 )
 registerServiceWorker()

@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import {inject, observer} from 'mobx-react'
 
 import {Paper} from 'material-ui'
-import {Portal} from 'react-portal'
 import TabsContainer from './TabsContainer'
 import {createPost, addAttachments} from '../../api.js'
 
@@ -18,7 +17,7 @@ const Wrap = styled.div`
 `
 
 const Overlay = styled.div`
-  position: absolute;
+  position: aboslute;
   top: 0;
   left: 0;
   width: 100%;
@@ -60,22 +59,20 @@ class Reporter extends Component {
 
   render () {
     return (
-      <Portal>
-        <Wrap>
-          <Overlay onClick={this.props.toggleReporter} />
-          <Box>
-            <Paper>
-              <TabsContainer
-                validData={this.props.appStore.reporter.validUserInput}
-                onCancelClick={this.props.toggleReporter}
-                sendReport={this.sendReport}
-                onTabClick={this.props.onTabClick}
-                tabId={this.props.tabId}
-              />
-            </Paper>
-          </Box>
-        </Wrap>
-      </Portal>
+      <Wrap>
+        <Overlay onClick={this.props.toggleReporter} />
+        <Box>
+          <Paper>
+            <TabsContainer
+              validData={this.props.appStore.reporter.validUserInput}
+              onCancelClick={this.props.toggleReporter}
+              sendReport={this.sendReport}
+              onTabClick={this.props.onTabClick}
+              tabId={this.props.tabId}
+            />
+          </Paper>
+        </Box>
+      </Wrap>
     )
   }
 }

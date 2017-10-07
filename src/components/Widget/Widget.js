@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { inject, observer } from 'mobx-react'
 
 import { Button, Tooltip } from 'material-ui'
-import { Portal } from 'react-portal'
 import { BugReport } from 'material-ui-icons'
 
 const Wrap = styled.div`
@@ -18,20 +18,22 @@ type Props = {
   toggleReporter: func,
 }
 
-export default class Widget extends Component {
+class Widget extends Component {
   props: Props;
 
   render () {
     return (
-      <Portal>
-        <Wrap>
-          <Tooltip style={{whiteSpace: 'nowrap'}} id="tooltip-icon" title="Report a bug" placement="left">
-            <Button onClick={this.props.toggleReporter} fab color='primary' aria-label='add'>
-              <BugReport />
-            </Button>
-          </Tooltip>
-        </Wrap>
-      </Portal>
+
+      <Wrap>
+        <Tooltip style={{whiteSpace: 'nowrap'}} id="tooltip-icon" title="Report a bug" placement="left">
+          <Button onClick={this.props.toggleReporter} fab color='primary' aria-label='add'>
+            <BugReport />
+          </Button>
+        </Tooltip>
+      </Wrap>
+
     )
   }
 }
+
+export default inject('appStore')(observer(Widget))
