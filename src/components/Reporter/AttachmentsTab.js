@@ -13,8 +13,8 @@ class AttachmentsTab extends Component {
   render () {
     return (
       <Wrap>
-        {this.props.appStore.reporter.attachments.map((attachment) => {
-          return <img width='256' border='1' src={attachment} alt='' />
+        {this.props.appStore.reporter.attachments.map((attachment, index) => {
+          return <img key={index} width='256' border='1' src={attachment} alt='' />
         })}
       </Wrap>
     )

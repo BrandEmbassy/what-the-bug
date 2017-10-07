@@ -40,10 +40,10 @@ class App extends Component {
 
   render () {
     return (
-      <MuiThemeProvider>
-        <Widget toggleReporter={this.toggleReporter} />
-        {this.renderReporter()}
-      </MuiThemeProvider>
+        <div>
+          <Widget toggleReporter={this.toggleReporter} />
+          {this.renderReporter()}
+        </div>
     )
   }
 }

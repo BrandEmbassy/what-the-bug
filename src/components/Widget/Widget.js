@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import { Button } from 'material-ui'
+import { Button, Tooltip } from 'material-ui'
 import { Portal } from 'react-portal'
 import { BugReport } from 'material-ui-icons'
 
@@ -24,9 +24,11 @@ export default class Widget extends Component {
     return (
       <Portal>
         <Wrap>
-          <Button onClick={this.props.toggleReporter} fab color='primary' aria-label='add'>
-            <BugReport />
-          </Button>
+          <Tooltip style={{whiteSpace: 'nowrap'}} id="tooltip-icon" title="Report a bug" placement="left">
+            <Button onClick={this.props.toggleReporter} fab color='primary' aria-label='add'>
+              <BugReport />
+            </Button>
+          </Tooltip>
         </Wrap>
       </Portal>
     )
