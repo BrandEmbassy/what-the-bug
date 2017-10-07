@@ -11,6 +11,7 @@ const Wrap = styled.div`
   right: 10px;
   width: 56px;
   height: 56px;
+  z-index: 10000000;
 `
 
 type Props = {

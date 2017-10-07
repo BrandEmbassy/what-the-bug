@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { observer, inject } from 'mobx-react'
 
-import { Typography } from 'material-ui'
+import { Typography, TextField } from 'material-ui'
 
 const Wrap = styled.div`
   position: relative;
@@ -18,16 +18,23 @@ class DiagnosticsTab extends Component {
 
     return (
       <Wrap>
-        <Typography type="body2">System info:</Typography>
-        <ul>
-          <li>{reporter.browser.name} (<small>{reporter.browser.version}</small>)</li>
-          <li>{reporter.osName}</li>
-        </ul>
+        <Typography type="body2">System</Typography>
+        <Typography>{reporter.browser.name} (<small>{reporter.browser.version}</small>)</Typography>
+        <Typography gutterBottom>{reporter.osName}</Typography>
 
         <Typography type="body2">Performance</Typography>
-        <textarea disabled style={{width: '650px', height: '300px'}}>
+        <TextField
+          id='performance'
+          multiline
+          rowsMax='16'
+          value={JSON.stringify(reporter.windowPerformance, null, 2)}
+          margin='normal'
+          fullWidth
+          disabled
+        />
+        {/* <textarea disabled style={{width: '100%', height: '300px'}}>
           {JSON.stringify(reporter.windowPerformance, null, 2)}
-        </textarea>
+        </textarea> */}
       </Wrap>
     )
   }

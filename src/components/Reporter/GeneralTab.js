@@ -25,7 +25,7 @@ class GeneralTab extends Component {
       <Wrap>
         <TextField
           id='email'
-          label='E-mail*'
+          label='Contact e-mail*'
           value={this.props.appStore.reporter.email}
           onChange={this.handleEmailChange}
           margin='normal'

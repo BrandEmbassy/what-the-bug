@@ -14,10 +14,11 @@ const Wrap = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 1000000;
 `
 
 const Overlay = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
