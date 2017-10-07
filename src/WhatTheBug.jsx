@@ -1,3 +1,4 @@
+import React from 'react'
 import { AppStore } from './stores/AppStore'
 import App from './App'
 import { Provider } from 'mobx-react'
@@ -12,7 +13,7 @@ export default function WhatTheBug() {
   )
 
   return (
-    <Provider appStore={appStore}>
+    <Provider appStore={appStore} >
       <App />
     </Provider>
   )
