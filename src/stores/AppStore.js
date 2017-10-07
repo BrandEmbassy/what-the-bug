@@ -13,7 +13,10 @@ export const AppStore = types
       attachments: [],
       windowPerformance: {}
     }),
-    sender: types.optional(SenderStore, {})
+    sender: types.optional(SenderStore, {
+      reportUrl: '',
+      channelId: ''
+    })
   })
   .views(self => ({
     get alert () {

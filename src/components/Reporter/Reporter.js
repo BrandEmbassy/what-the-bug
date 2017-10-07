@@ -45,13 +45,14 @@ class Reporter extends Component {
 
   sendReport = () => {
     const reporter = this.props.appStore.reporter
+    const sender = this.props.appStore.sender
     const content = reporter.description + '\n\n' +
       'Browser: ' + reporter.browser.name + '\n' +
       'Browser Version: ' + reporter.browser.version + '\n' +
       'OS: ' + reporter.osName + '\n'
 
-    createPost(reportUrl, channelId, 'Bug Report by WTB', content, {id: reporter.email, name: 'Agent'}).then((postId) => {
-      const attachmentUrl = `${reportUrl}/${postId}/attachments`
+    createPost(sender.reportUrl, sender.channelId, 'Bug Report by WTB', content, {id: reporter.email, name: 'Agent'}).then((postId) => {
+      const attachmentUrl = `${sender.reportUrl}/${postId}/attachments`
       addAttachments(attachmentUrl, reporter.attachments).then(() => {
         this.props.toggleReporter()
       })

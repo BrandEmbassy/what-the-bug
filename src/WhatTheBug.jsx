@@ -1,8 +1,9 @@
+import React from 'react'
 import { AppStore } from './stores/AppStore'
-import App from './App'
 import { Provider } from 'mobx-react'
+import App from './App'
 
-export default function WhatTheBug(reportUrl, channelId) {
+export default function WhatTheBug({reportUrl, channelId}) {
 
   const appStore = AppStore.create(
     {},
