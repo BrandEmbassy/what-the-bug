@@ -32,6 +32,10 @@ export const ReportStore = types
 
     addAttachment (attachment) {
       self.attachments.push(attachment)
+    },
+
+    deleteAttachments () {
+      self.attachments = [];
     }
 
   }))

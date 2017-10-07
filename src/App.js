@@ -16,7 +16,11 @@ const theme = createMuiTheme({
 
 class App extends Component {
   toggleReporter = () => {
-    this.screenshot()
+    if (!this.props.appStore.ui.isOpen) {
+      this.props.appStore.reporter.deleteAttachments();
+      this.screenshot()
+    }
+
     this.props.appStore.ui.toggleReporter()
   }
 

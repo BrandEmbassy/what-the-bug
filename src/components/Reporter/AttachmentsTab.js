@@ -1,6 +1,7 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
-import {inject, observer} from 'mobx-react'
+import { inject, observer } from 'mobx-react'
+import { Typography, Paper } from 'material-ui'
 
 const Wrap = styled.div`
   position: relative;
@@ -9,12 +10,29 @@ const Wrap = styled.div`
   height: 100%;
 `
 
+const Img = styled.div`
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+`
+
 class AttachmentsTab extends Component {
-  render () {
+  render() {
     return (
       <Wrap>
+        <Typography type={'body2'} gutterBottom>
+          Screenshot
+        </Typography>
         {this.props.appStore.reporter.attachments.map((attachment, index) => {
-          return <img key={index} width='256' border='1' src={attachment} alt='' />
+          return (
+            <Img>
+              <Paper elevation={4} key={index}>
+                <img width="100%" src={attachment} alt="" />
+              </Paper>
+            </Img>
+          )
         })}
       </Wrap>
     )
