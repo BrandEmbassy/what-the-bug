@@ -6,7 +6,7 @@ import {inject, observer} from 'mobx-react'
 import {Paper} from 'material-ui'
 import {Portal} from 'react-portal'
 import TabsContainer from './TabsContainer'
-import {createPost} from '../../api.js'
+import {createPost, addAttachments} from '../../api.js'
 
 const Wrap = styled.div`
   position: fixed;
@@ -49,7 +49,11 @@ class Reporter extends Component {
       'Browser Version: ' + reporter.browserVersion + '\n' +
       'OS: ' + reporter.osName + '\n'
 
-    createPost('WAT? The bug?', content, {id: reporter.email, name: 'Meganasratý zákoš'})
+    createPost('WAT? The bug?', content, {id: reporter.email, name: 'Meganasratý zákoš'}).then((postId) => {
+      addAttachments(postId, reporter.attachments).then(() => {
+        this.props.toggleReporter()
+      })
+    })
   }
 
   render () {
