@@ -32,9 +32,6 @@ class DiagnosticsTab extends Component {
           fullWidth
           disabled
         />
-        {/* <textarea disabled style={{width: '100%', height: '300px'}}>
-          {JSON.stringify(reporter.windowPerformance, null, 2)}
-        </textarea> */}
       </Wrap>
     )
   }
