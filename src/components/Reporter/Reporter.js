@@ -1,9 +1,12 @@
-import React, { Component } from 'react'
+// @flow
+import React, {Component} from 'react'
 import styled from 'styled-components'
+import {inject, observer} from 'mobx-react'
 
-import { Paper } from 'material-ui'
-import { Portal } from 'react-portal'
+import {Paper} from 'material-ui'
+import {Portal} from 'react-portal'
 import TabsContainer from './TabsContainer'
+import {createPost} from '../../api.js'
 
 const Wrap = styled.div`
   position: fixed;
@@ -36,8 +39,18 @@ type Props = {
   toggleReporter: func
 };
 
-export default class Reporter extends Component {
-  props: Props;
+class Reporter extends Component {
+  props: Props
+
+  sendReport = () => {
+    const reporter = this.props.appStore.reporter
+    const content = reporter.desc + '\n\n' +
+      'Browser: ' + reporter.browserName + '\n' +
+      'Browser Version: ' + reporter.browserVersion + '\n' +
+      'OS: ' + reporter.osName + '\n'
+
+    createPost('WAT? The bug?', content, {id: reporter.email, name: 'Meganasratý zákoš'})
+  }
 
   render () {
     return (
@@ -48,6 +61,7 @@ export default class Reporter extends Component {
             <Paper>
               <TabsContainer
                 onCancelClick={this.props.toggleReporter}
+                sendReport={this.sendReport}
                 onTabClick={this.props.onTabClick}
                 tabId={this.props.tabId}
               />
@@ -58,3 +72,5 @@ export default class Reporter extends Component {
     )
   }
 }
+
+export default inject('appStore')(observer(Reporter))

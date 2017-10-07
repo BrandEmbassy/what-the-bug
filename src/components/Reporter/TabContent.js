@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import SwipeableViews from 'react-swipeable-views';
+import SwipeableViews from 'react-swipeable-views'
 
 import DiagnosticsTab from './DiagnosticsTab'
 import GeneralTab from './GeneralTab'

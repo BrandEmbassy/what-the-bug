@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { withStyles } from 'material-ui/styles'
@@ -53,9 +54,9 @@ class TabsContainer extends Component {
             <Tab label='Attachments' />
           </Tabs>
         </AppBar>
-        <TabContent tabId={this.props.tabId} onChange={this.handleChangeIndex}/>
+        <TabContent tabId={this.props.tabId} onChange={this.handleChangeIndex} />
         <Div>
-          <Button className={this.props.classes.button} raised color='primary'>
+          <Button onClick={this.props.sendReport} className={this.props.classes.button} raised color='primary'>
             Send
           </Button>
           <Button onClick={this.props.onCancelClick}>

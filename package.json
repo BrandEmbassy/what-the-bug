@@ -17,7 +17,8 @@
     "react-scripts": "1.0.14",
     "react-swipeable-views": "^0.12.8",
     "styled-components": "^2.2.1",
-    "typeface-roboto": "^0.0.35"
+    "typeface-roboto": "^0.0.35",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
@@ -26,8 +27,9 @@
   "standard": {
     "parser": "babel-eslint"
   },
+  "proxy": "http://api.be.com",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3002 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
