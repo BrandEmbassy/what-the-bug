@@ -27,7 +27,7 @@ class DiagnosticsTab extends Component {
           id='performance'
           multiline
           rowsMax='16'
-          value={JSON.stringify(reporter.windowPerformance, null, 2)}
+          value={reporter.attachments[0].plainText}
           margin='normal'
           fullWidth
           disabled

@@ -22,6 +22,26 @@ const BrowserStore = types
 
   }))
 
+const Attachment = types
+  .model('Attachment', {
+    id: '',
+    content: types.frozen,
+    filename: '',
+    plainText: '',
+    mimeType: ''
+  })
+  .actions(self => ({
+
+    setMimeType (mimeType) {
+      self.mimeType = mimeType
+    },
+
+    setVersion (content: Blob) {
+      self.content = content
+    }
+
+  }))
+
 const ReportStore = types
   .model('ReportStore', {
     browser: types.optional(BrowserStore, {
@@ -29,15 +49,14 @@ const ReportStore = types
       version: ''
     }),
     osName: '',
-    windowPerformance: types.frozen,
 
     email: '',
     description: '',
-    attachments: types.array(types.string)
+    attachments: types.array(Attachment, [])
   })
   .views(self => ({
     get validUserInput () {
-      return self.email !== '' && self.desc !== '' && validateEmail(self.email);
+      return self.email !== '' && self.desc !== '' && validateEmail(self.email)
     }
   }))
   .actions(self => ({
@@ -63,7 +82,7 @@ const ReportStore = types
     },
 
     deleteAttachments () {
-      self.attachments = [];
+      self.attachments = []
     }
 
   }))

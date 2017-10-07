@@ -1,6 +1,5 @@
 // @flow
 const uuidv4 = require('uuid/v4')
-const b64toBlob = require('b64-to-blob')
 
 const channelId: string = 'ind_40'
 const brandId = 1
@@ -32,13 +31,10 @@ const createPost = async function(
   return postId
 }
 
-const addAttachments = async function(postId: string, attachments: array) {
+const addAttachments = async function(postId: string, attachments: Array) {
   const formData = new FormData()
   attachments.forEach(attachment => {
-    const filename = uuidv4()
-    const b64Data = attachment.split(';base64,')[1]
-    const blob = b64toBlob(b64Data, 'image/png')
-    formData.append(filename, blob, `screenshot-${filename}.png`)
+    formData.append(attachment.id, attachment.content, attachment.filename)
   })
 
   await fetch(`/engager/2.0/brands/${brandId}/posts/${postId}/attachments`, {

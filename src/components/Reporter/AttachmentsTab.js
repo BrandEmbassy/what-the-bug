@@ -26,13 +26,14 @@ class AttachmentsTab extends Component {
           Screenshot
         </Typography>
         {this.props.appStore.reporter.attachments.map((attachment, index) => {
-          return (
-            <Img>
-              <Paper elevation={4} key={index}>
-                <img width="100%" src={attachment} alt="" />
-              </Paper>
-            </Img>
-          )
+          switch (attachment.mimeType) {
+            case 'image/png':
+              return <Img>
+                  <Paper elevation={4} key={index}>
+                    <img width="100%" src={attachment.plainText} alt="" />
+                  </Paper>
+                </Img>
+          }
         })}
       </Wrap>
     )
